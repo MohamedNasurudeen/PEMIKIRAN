@@ -42,8 +42,8 @@ public class New_Organization_sce1 {
     	  System.out.println("organization page should not be displayed");
       
       driver.findElement(By.xpath("//img[@alt='Create Organization...']")).click();
-      String createorganization = driver.findElement(By.xpath("//span[@class='lvtHeaderText']")).getText();
-      if(createorganization.contains("Creating New Organization"))
+      String createNeweorganizationPageHeader = driver.findElement(By.xpath("//span[@class='lvtHeaderText']")).getText();
+      if(createNeweorganizationPageHeader.contains("Creating New Organization"))
     	  System.out.println("create new organization page should be displayed");
       else
     	  System.out.println("create new organization page should not be displayed");
@@ -57,7 +57,7 @@ public class New_Organization_sce1 {
     	   System.out.println("New organization information should not be display");
 	
 	    driver.findElement(By.xpath("//a[@class='hdrLink']")).click();
-	    String neworgtable = driver.findElement(By.xpath("//table[@class='lvt small']/descendant::tr[last()]/td[3]")).getText();
+	    String neworgtable = driver.findElement(By.xpath("//table[@class='lvt small']/descendant::tr[last()]/td[3]/a")).getText();
 	     if(neworgtable.equals("Aliyas1"))
 	    	 System.out.println("new created organization name list should be displayed ");
 	     else
@@ -65,7 +65,8 @@ public class New_Organization_sce1 {
 	     
 	     WebElement administratorIcon = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
 	     Actions action = new Actions(driver);
-	     action.doubleClick(administratorIcon).perform();
+	     action.moveToElement(administratorIcon).perform();
+	  //   action.doubleClick(administratorIcon).perform();
 	     driver.findElement(By.xpath("//a[.='Sign Out']")).click();
 	     driver.quit();
 	
