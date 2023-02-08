@@ -4,12 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+
 
 import pomPages.ContactPage;
 import pomPages.CreateContactsPage;
@@ -29,6 +26,8 @@ public class BaseClass {
 	protected JavaUtility javaUtil;
 	protected WebDriverUtility web;
 	protected WebDriver driver;
+	public static JavaUtility sjavaUtil;
+	public static WebDriver sdriver;
 	protected LoginPage login;
 	protected HomePage home;
 	protected OrganizationPage organization;
@@ -50,6 +49,7 @@ public class BaseClass {
 		 property = new PropertiesFileUtility();
 		 excel = new ExcelFileUtility();
 		 javaUtil = new JavaUtility();
+		 sjavaUtil=javaUtil;
 		 web = new WebDriverUtility();
 		
 		property.propertyFileInitialization(iConstantPath.PROPERTY_FILE_PATH);
@@ -63,7 +63,8 @@ public class BaseClass {
 		String browser = property.fetchproperty("browser");
 	    String url = property.fetchproperty("url");
 	    long time = Long.parseLong(property.fetchproperty("timeouts"));	
-	    WebDriver driver = web.openApplication(browser, url, time);
+	    driver = web.openApplication(browser, url, time);
+	    sdriver=driver;
 	    Assert.assertTrue(driver.getTitle().contains("vtiger"));
 	    
 	    login = new LoginPage(driver);

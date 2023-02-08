@@ -231,11 +231,11 @@ public class WebDriverUtility {
       
 	 /**
 	  * This method is used to fetch the screenshot of the web page in File
-	  * @param classname
 	  * @param javaUtil
+	  * @param classname
 	  * @return
 	  */
-	  public String getScreenshot(String classname, JavaUtility javaUtil) {
+	  public String getScreenshot(JavaUtility javaUtil, String classname) {
 		  TakesScreenshot ts = (TakesScreenshot) driver;
 		     String currentTime = javaUtil.getCurrentTime();
 		      File src = ts.getScreenshotAs(OutputType.FILE);

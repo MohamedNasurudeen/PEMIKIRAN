@@ -34,8 +34,7 @@ public class ListenerImplimentation implements ITestListener{
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		test.skip(result.getMethod().getMethodName());
-		test.fail(result.getMethod().getMethodName());
+		System.out.println("onTestSkipped");
 	}
 
 	@Override
@@ -53,7 +52,7 @@ public class ListenerImplimentation implements ITestListener{
 
 	@Override
 	public void onFinish(ITestContext context) {
-		report.flush();
+		System.out.println("onFinish");
 	}
 
 }
