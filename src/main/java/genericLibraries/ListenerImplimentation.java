@@ -27,9 +27,9 @@ public class ListenerImplimentation implements ITestListener{
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		test.fail(result.getMethod().getMethodName());
-		test.addScreenCaptureFromBase64String(new WebDriverUtility().getScreenshot());
-	//	test.addScreenCaptureFromPath(new WebDriverUtility().getScreenshot(result.getMethod().getMethodName(),new JavaUtility()));
+		test.fail(result.getMethod().getMethodName()+"Fail");
+	//	test.addScreenCaptureFromBase64String(new WebDriverUtility().getScreenshot(BaseClass.sdriver));
+		test.addScreenCaptureFromPath(new WebDriverUtility().getScreenshot(result.getMethod().getMethodName(),BaseClass.sjavaUtil,BaseClass.sdriver));
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class ListenerImplimentation implements ITestListener{
 
 	@Override
 	public void onFinish(ITestContext context) {
-		System.out.println("onFinish");
+		report.flush();
 	}
 
 }

@@ -26,9 +26,9 @@ public class CreateContactTest extends BaseClass {
 	public void createContact() {
 		SoftAssert soft = new SoftAssert();
 	      home.clickContacts();	      
-	    //  soft.assertTrue(contact.getPageHeader().contains("Contacts "));
+	      soft.assertTrue(contact.getPageHeader().contains("Contacts"));
 	      contact.clickPlusButton();
-	      soft.assertTrue(createContact.getPageHeader().contains("Creating New Contact"));
+	      soft.assertTrue(createContact.getPageHeader().contains("Create"));
 	      
 	      Map<String, String> map = excel.readDataFromExcel("Create Contact", "ContactTestData");	      	    
 	      String lastName = map.get("Last Name")+javaUtil.generateRandomNumber(100);
@@ -37,6 +37,7 @@ public class CreateContactTest extends BaseClass {
 	      soft.assertTrue(newContactinfo.getPageHeader().contains(lastName));
 
 		    newContactinfo.clickContactsLink();
+		    contact.clickLastPage();
 		    soft.assertTrue(contact.getContact().equals(lastName));
 
 		     if(contact.getContact().equals(lastName))

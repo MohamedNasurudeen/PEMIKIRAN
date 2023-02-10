@@ -235,7 +235,7 @@ public class WebDriverUtility {
 	  * @param classname
 	  * @return
 	  */
-	  public String getScreenshot(JavaUtility javaUtil, String classname) {
+	  public String getScreenshot(String classname, JavaUtility javaUtil, WebDriver driver) {
 		  TakesScreenshot ts = (TakesScreenshot) driver;
 		     String currentTime = javaUtil.getCurrentTime();
 		      File src = ts.getScreenshotAs(OutputType.FILE);
@@ -251,7 +251,7 @@ public class WebDriverUtility {
 	  * This method is used to fetch the Screenshot based on base64 format 
 	  * @return
 	  */
-	  public String getScreenshot() {
+	  public String getScreenshot(WebDriver driver) {
 		  TakesScreenshot ts = (TakesScreenshot) driver;
 		  return ts.getScreenshotAs(OutputType.BASE64);
 	  }

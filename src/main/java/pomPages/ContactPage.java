@@ -14,6 +14,7 @@ public class ContactPage {
 	@FindBy (xpath="//img[@alt='Create Contact...']") private WebElement plusButton;
 	@FindBy (xpath="//table[@class='lvt small']/descendant::tr[last()]/td[4]/a") private WebElement contacttable;
 	@FindBy (xpath="//a[@class='hdrLink']") private WebElement pageHeader;
+	@FindBy (xpath="(//img)[43]") private WebElement lastPage;
 	
 	public ContactPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -41,7 +42,12 @@ public class ContactPage {
 		return contacttable.getText();
 	}
 	
-	
+	/**
+     * This method is used to last page of the table
+     */
+	public void clickLastPage() {
+		lastPage.click();
+	}
 	
 	
 	
